@@ -17,12 +17,15 @@ export const TrainRoutePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const popularRoutes = [
+    { num: '22961', name: '22961 - VB (Mumbai-Ahmedabad)' },
+    { num: '22962', name: '22962 - VB (Ahmedabad-Mumbai)' },
+    { num: '22401', name: '22401 - VB Sleeper (Delhi-Mumbai)' },
+    { num: '15557', name: '15557 - Amrit Bharat Express' },
     { num: '22436', name: '22436 - Vande Bharat (NDLS-BSB)' },
-    { num: '12002', name: '12002 - Shatabdi (NDLS-BPL)' },
     { num: '12951', name: '12951 - Rajdhani (MMCT-NDLS)' },
-    { num: '12301', name: '12301 - Rajdhani (HWH-NDLS)' },
-    { num: '20901', name: '20901 - Vande Bharat (MMCT-ADI)' },
-    { num: '12626', name: '12626 - Kerala SF Express (NDLS-MAS)' },
+    { num: '12002', name: '12002 - Shatabdi (NDLS-BPL)' },
+    { num: '69101', name: '69101 - MEMU Express' },
+    { num: '90001', name: '90001 - Western EMU Local' },
   ];
 
   const fetchRoute = async (num: string) => {
@@ -44,9 +47,11 @@ export const TrainRoutePage: React.FC = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputVal.trim()) return;
-    setTrainNumber(inputVal.trim());
-    setSearchParams({ train: inputVal.trim() });
+    const clean = inputVal.trim();
+    if (!clean) return;
+    setTrainNumber(clean);
+    setSearchParams({ train: clean });
+    fetchRoute(clean);
   };
 
   return (
@@ -91,6 +96,7 @@ export const TrainRoutePage: React.FC = () => {
                 setTrainNumber(r.num);
                 setInputVal(r.num);
                 setSearchParams({ train: r.num });
+                fetchRoute(r.num);
               }}
               className={`px-2.5 py-1 rounded-lg text-xs transition-colors ${
                 trainNumber === r.num
@@ -154,8 +160,10 @@ export const TrainRoutePage: React.FC = () => {
               <span>Interactive Leaflet Route Alignment</span>
             </h3>
             <TrainRouteMap
+              key={`route-map-${trainNumber}-${routeDetail.train_number}-${routeDetail.total_stops}`}
               coordinates={routeDetail.coordinates}
               stops={routeDetail.stops}
+              trainNumber={routeDetail.train_number || trainNumber}
               height="460px"
             />
           </div>

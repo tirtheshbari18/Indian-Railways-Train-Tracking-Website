@@ -29,14 +29,15 @@ export const TrainLiveStatusPage: React.FC = () => {
   const navigate = useNavigate();
 
   const popularTrains = [
+    { num: '22961', name: '22961 - Vande Bharat (MMCT-ADI)' },
+    { num: '22962', name: '22962 - Vande Bharat (ADI-MMCT)' },
+    { num: '15557', name: '15557 - Amrit Bharat (DBG-ANVT)' },
+    { num: '22401', name: '22401 - VB Sleeper (NDLS-MMCT)' },
     { num: '12951', name: '12951 - Tejas Rajdhani (MMCT-NDLS)' },
-    { num: '12952', name: '12952 - Tejas Rajdhani (NDLS-MMCT)' },
     { num: '22436', name: '22436 - Vande Bharat (NDLS-BSB)' },
     { num: '12002', name: '12002 - Bhopal Shatabdi' },
-    { num: '12301', name: '12301 - Howrah Rajdhani' },
-    { num: '20901', name: '20901 - Gandhinagar VB' },
-    { num: '12626', name: '12626 - Kerala Express' },
-    { num: '12137', name: '12137 - Punjab Mail' },
+    { num: '69101', name: '69101 - MEMU (BRC-ADI)' },
+    { num: '90001', name: '90001 - AC EMU Local (CCG-VR)' },
   ];
 
   const fetchLiveStatus = async (targetNum: string) => {
@@ -139,7 +140,10 @@ export const TrainLiveStatusPage: React.FC = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputNumber.trim()) return;
-    navigate(`/live-status/${inputNumber.trim()}`);
+    const clean = inputNumber.trim();
+    setTrainNumber(clean);
+    navigate(`/live-status/${clean}`);
+    fetchLiveStatus(clean);
   };
 
   const handleManualAdvance = () => {
@@ -289,6 +293,8 @@ export const TrainLiveStatusPage: React.FC = () => {
                 </span>
               </div>
               <TrainRouteMap
+                key={`live-map-${trainNumber}-${routeDetail.train_number}-${routeDetail.total_stops}`}
+                trainNumber={trainNumber}
                 coordinates={routeDetail.coordinates}
                 stops={routeDetail.stops}
                 currentLocation={{

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
-import { LocateFixed, ZoomIn, ZoomOut } from 'lucide-react';
+import { LocateFixed } from 'lucide-react';
 
 interface Props {
+  trainNumber?: string;
   coordinates: [number, number][];
   stops: {
     sequence: number;
@@ -24,16 +25,17 @@ interface Props {
 }
 
 export const TrainRouteMap: React.FC<Props> = ({
+  trainNumber,
   coordinates,
   stops,
   currentLocation,
-  height = "450px"
+  height = "480px"
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const trainMarkerRef = useRef<L.Marker | null>(null);
   const polylineRef = useRef<L.Polyline | null>(null);
-  const prevCoordsKeyRef = useRef<string>('');
+  const prevRouteKeyRef = useRef<string>('');
 
   // Helper to re-center on train
   const handleRecenterTrain = () => {
@@ -50,17 +52,23 @@ export const TrainRouteMap: React.FC<Props> = ({
   // Helper to fit entire route
   const handleFitRoute = () => {
     if (mapInstanceRef.current && polylineRef.current) {
-      mapInstanceRef.current.fitBounds(polylineRef.current.getBounds(), { padding: [40, 40] });
+      mapInstanceRef.current.fitBounds(polylineRef.current.getBounds(), { padding: [50, 50], animate: true });
     }
   };
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    const coordsKey = JSON.stringify(coordinates.slice(0, 3));
-    const isNewRoute = prevCoordsKeyRef.current !== coordsKey;
+    // Unique key identifying this exact route
+    const currentTrainId = trainNumber || currentLocation?.train_number || '';
+    const stopCodes = stops.map(s => s.station_code).join('-');
+    const firstCoord = coordinates[0] ? `${coordinates[0][0].toFixed(3)},${coordinates[0][1].toFixed(3)}` : '';
+    const lastCoord = coordinates[coordinates.length - 1] ? `${coordinates[coordinates.length - 1][0].toFixed(3)},${coordinates[coordinates.length - 1][1].toFixed(3)}` : '';
+    const routeIdentifier = `${currentTrainId}__${stopCodes}__${coordinates.length}__${firstCoord}__${lastCoord}`;
 
-    // Create map instance if not already created
+    const isNewRoute = prevRouteKeyRef.current !== routeIdentifier;
+
+    // Create map instance if not already initialized
     if (!mapInstanceRef.current) {
       const defaultCenter: [number, number] = coordinates.length > 0 ? coordinates[0] : [22.5937, 78.9629];
       const map = L.map(mapContainerRef.current, {
@@ -71,7 +79,7 @@ export const TrainRouteMap: React.FC<Props> = ({
       });
       mapInstanceRef.current = map;
 
-      // Base tile layer
+      // Base OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Indian Railways Telematics',
         maxZoom: 18,
@@ -80,29 +88,30 @@ export const TrainRouteMap: React.FC<Props> = ({
 
     const map = mapInstanceRef.current;
 
-    // If new route, rebuild layers
+    // If route changed or first render, rebuild route layers
     if (isNewRoute) {
-      prevCoordsKeyRef.current = coordsKey;
+      prevRouteKeyRef.current = routeIdentifier;
 
-      // Clear existing markers and lines
+      // Remove existing polylines, circle markers, and markers
       map.eachLayer((layer) => {
-        if (layer instanceof L.Polyline || layer instanceof L.Marker) {
+        if (layer instanceof L.Polyline || layer instanceof L.Marker || layer instanceof L.CircleMarker) {
           map.removeLayer(layer);
         }
       });
       trainMarkerRef.current = null;
+      polylineRef.current = null;
 
       // 1. Underlay track bed casing line (dark slate)
       if (coordinates.length > 0) {
         L.polyline(coordinates, {
-          color: '#1e293b',
+          color: '#0f172a',
           weight: 6,
-          opacity: 0.65,
+          opacity: 0.7,
           lineCap: 'round',
           lineJoin: 'round'
         }).addTo(map);
 
-        // 2. Active Railway Corridor Line (crisp blue)
+        // 2. Active Railway Corridor Line (high-visibility cyan/blue)
         const polyline = L.polyline(coordinates, {
           color: '#0284c7',
           weight: 3.5,
@@ -113,7 +122,11 @@ export const TrainRouteMap: React.FC<Props> = ({
         polylineRef.current = polyline;
 
         // Auto-fit route bounds with pleasant padding
-        map.fitBounds(polyline.getBounds(), { padding: [40, 40] });
+        try {
+          map.fitBounds(polyline.getBounds(), { padding: [50, 50], animate: true });
+        } catch (e) {
+          // ignore fitBounds if geometry single point
+        }
       }
 
       // 3. Station markers
@@ -142,7 +155,7 @@ export const TrainRouteMap: React.FC<Props> = ({
               ${stop.station_name}
             </div>
             <div style="color: #ea580c; font-weight: 600; font-family: monospace;">
-              Code: ${stop.station_code}
+              Station Code: ${stop.station_code}
             </div>
             <div style="color: #64748b; margin-top: 2px;">
               Stop #${stop.sequence} ${isOrigin ? '(Source Terminal)' : isDest ? '(Destination)' : ''}
@@ -157,7 +170,7 @@ export const TrainRouteMap: React.FC<Props> = ({
       });
     }
 
-    // 4. Live Train GPS Marker (Smooth Position Update)
+    // 4. Live Train GPS Marker
     if (currentLocation && currentLocation.latitude && currentLocation.longitude) {
       const trainIcon = L.divIcon({
         className: 'current-live-train-marker',
@@ -211,7 +224,7 @@ export const TrainRouteMap: React.FC<Props> = ({
       }
     }
 
-  }, [coordinates, stops, currentLocation]);
+  }, [trainNumber, coordinates, stops, currentLocation]);
 
   // Clean up on unmount
   useEffect(() => {

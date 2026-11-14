@@ -28,6 +28,7 @@ import {
   getFallbackRoute,
   getFallbackLiveStatus
 } from './fallbackData';
+import { resolveUniversalTrain } from './trainCatalog';
 
 // Avoid duplicate /api if the user provided e.g. https://domain.com/api in Vercel
 const rawApiUrl = (import.meta.env.VITE_API_URL as string || '').trim().replace(/\/+$/, '');
@@ -147,19 +148,26 @@ export const api = {
 
       let results = [...FALLBACK_TRAINS];
       if (params.query) {
-        const q = params.query.toLowerCase();
+        const q = params.query.toLowerCase().trim();
         results = results.filter(
           t => t.train_number.toLowerCase().includes(q) || t.train_name.toLowerCase().includes(q)
         );
       }
       if (params.category && params.category !== 'ALL') {
-        results = results.filter(t => t.train_category === params.category);
+        const catNorm = params.category.toLowerCase().replace(/[\s/_-]+/g, '');
+        results = results.filter(t => {
+          const tNorm = (t.train_category || '').toLowerCase().replace(/[\s/_-]+/g, '');
+          return tNorm.includes(catNorm) || catNorm.includes(tNorm);
+        });
       }
       if (params.source_code) {
         results = results.filter(t => t.source_station.code.toUpperCase() === params.source_code!.toUpperCase());
       }
       if (params.destination_code) {
         results = results.filter(t => t.destination_station.code.toUpperCase() === params.destination_code!.toUpperCase());
+      }
+      if (results.length === 0 && params.query && /^\d{3,5}$/.test(params.query.trim())) {
+        results = [resolveUniversalTrain(params.query.trim())];
       }
       return results;
     },
@@ -181,7 +189,9 @@ export const api = {
       } catch (err) {
         // Fallback
       }
-      return FALLBACK_TRAINS.find(t => t.train_number === trainNumber) || FALLBACK_TRAINS[0];
+      const found = FALLBACK_TRAINS.find(t => t.train_number === trainNumber);
+      if (found) return found;
+      return resolveUniversalTrain(trainNumber);
     },
 
     getRoute: async (trainNumber: string): Promise<TrainRouteDetail> => {

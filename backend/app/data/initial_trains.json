@@ -694,5 +694,169 @@
       "current_longitude": 81.5000,
       "data_source_type": "DEMO_DATA"
     }
+  },
+  {
+    "train_number": "22961",
+    "train_name": "Vande Bharat Express (Mumbai - Ahmedabad)",
+    "train_category": "Vande Bharat",
+    "source_code": "MMCT",
+    "destination_code": "ADI",
+    "departure_time": "15:55",
+    "arrival_time": "21:25",
+    "total_distance_km": 493.0,
+    "total_duration_minutes": 330,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat",
+    "rake_type": "Vande Bharat 2.0 (16 Coaches)",
+    "classes": "EC,CC",
+    "average_speed_kmh": 89.6,
+    "max_speed_kmh": 160.0,
+    "punctuality_rating": 4.9,
+    "stops": [
+      {
+        "station_code": "MMCT",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "15:55",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "5"
+      },
+      {
+        "station_code": "BVI",
+        "stop_sequence": 2,
+        "scheduled_arrival": "16:23",
+        "scheduled_departure": "16:25",
+        "halt_minutes": 2,
+        "distance_from_source_km": 30.0,
+        "day_number": 1,
+        "platform_number": "6"
+      },
+      {
+        "station_code": "ST",
+        "stop_sequence": 3,
+        "scheduled_arrival": "18:43",
+        "scheduled_departure": "18:46",
+        "halt_minutes": 3,
+        "distance_from_source_km": 263.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "BRC",
+        "stop_sequence": 4,
+        "scheduled_arrival": "20:02",
+        "scheduled_departure": "20:05",
+        "halt_minutes": 3,
+        "distance_from_source_km": 392.0,
+        "day_number": 1,
+        "platform_number": "3"
+      },
+      {
+        "station_code": "ADI",
+        "stop_sequence": 5,
+        "scheduled_arrival": "21:25",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 493.0,
+        "day_number": 1,
+        "platform_number": "1"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 2,
+      "current_speed_kmh": 128.0,
+      "distance_covered_km": 285.0,
+      "distance_remaining_km": 208.0,
+      "progress_percentage": 57.8,
+      "last_reported_code": "ST",
+      "next_scheduled_code": "BRC",
+      "current_latitude": 21.6500,
+      "current_longitude": 73.0100,
+      "data_source_type": "GPS_TELEMETRY"
+    }
+  },
+  {
+    "train_number": "22962",
+    "train_name": "Vande Bharat Express (Ahmedabad - Mumbai)",
+    "train_category": "Vande Bharat",
+    "source_code": "ADI",
+    "destination_code": "MMCT",
+    "departure_time": "06:10",
+    "arrival_time": "11:35",
+    "total_distance_km": 493.0,
+    "total_duration_minutes": 325,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat",
+    "rake_type": "Vande Bharat 2.0 (16 Coaches)",
+    "classes": "EC,CC",
+    "average_speed_kmh": 91.0,
+    "max_speed_kmh": 160.0,
+    "punctuality_rating": 4.9,
+    "stops": [
+      {
+        "station_code": "ADI",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "06:10",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "BRC",
+        "stop_sequence": 2,
+        "scheduled_arrival": "07:00",
+        "scheduled_departure": "07:03",
+        "halt_minutes": 3,
+        "distance_from_source_km": 101.0,
+        "day_number": 1,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "ST",
+        "stop_sequence": 3,
+        "scheduled_arrival": "08:20",
+        "scheduled_departure": "08:23",
+        "halt_minutes": 3,
+        "distance_from_source_km": 230.0,
+        "day_number": 1,
+        "platform_number": "3"
+      },
+      {
+        "station_code": "BVI",
+        "stop_sequence": 4,
+        "scheduled_arrival": "10:50",
+        "scheduled_departure": "10:52",
+        "halt_minutes": 2,
+        "distance_from_source_km": 463.0,
+        "day_number": 1,
+        "platform_number": "7"
+      },
+      {
+        "station_code": "MMCT",
+        "stop_sequence": 5,
+        "scheduled_arrival": "11:35",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 493.0,
+        "day_number": 1,
+        "platform_number": "5"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 0,
+      "current_speed_kmh": 130.0,
+      "distance_covered_km": 150.0,
+      "distance_remaining_km": 343.0,
+      "progress_percentage": 30.4,
+      "last_reported_code": "BRC",
+      "next_scheduled_code": "ST",
+      "current_latitude": 22.0500,
+      "current_longitude": 73.0800,
+      "data_source_type": "GPS_TELEMETRY"
+    }
   }
 ]

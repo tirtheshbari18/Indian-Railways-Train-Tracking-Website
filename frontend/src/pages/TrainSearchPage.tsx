@@ -20,7 +20,22 @@ export const TrainSearchPage: React.FC = () => {
   const [trains, setTrains] = useState<Train[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const categories = ["ALL", "Vande Bharat", "Rajdhani", "Shatabdi", "Superfast", "Duronto"];
+  const categories = [
+    "ALL",
+    "Vande Bharat",
+    "VB Sleeper",
+    "Amrit Bharat",
+    "Rajdhani",
+    "Shatabdi",
+    "Superfast",
+    "Mail / Express",
+    "Weekly Superfast",
+    "Duronto",
+    "MEMU",
+    "DEMU",
+    "EMU Local",
+    "Passenger",
+  ];
   const days = ["ALL", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const timeRanges = [
     { label: "All Day", value: "ALL" },
