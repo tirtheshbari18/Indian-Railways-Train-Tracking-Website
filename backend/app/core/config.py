@@ -2,13 +2,16 @@ import os
 from typing import List
 from pydantic_settings import BaseSettings
 
+is_vercel = bool(os.getenv("VERCEL") or os.getenv("AWS_LAMBDA_FUNCTION_NAME") or "VERCEL" in os.environ)
+default_db_url = "sqlite:////tmp/railway.db" if is_vercel else "sqlite:///./railway.db"
+
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Indian Railways Train Tracking Platform"
     PROJECT_VERSION: str = "1.0.0"
     API_V1_STR: str = "/api"
     
-    # Database: Supports PostgreSQL or local SQLite fallback
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./railway.db")
+    # Database: Supports PostgreSQL or local SQLite fallback (uses /tmp on Vercel)
+    DATABASE_URL: str = os.getenv("DATABASE_URL", default_db_url)
     
     # JWT Settings
     SECRET_KEY: str = os.getenv("SECRET_KEY", "railway-super-secret-key-change-in-production-768392")

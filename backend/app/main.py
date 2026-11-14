@@ -6,16 +6,28 @@ from app.core.database import SessionLocal, Base, engine
 from app.data.seed import seed_database
 from app.api import auth, trains, routes, live_status, stations, comparison, map_data, favourites, admin, system
 
+_db_initialized = False
+
+def ensure_db_initialized():
+    global _db_initialized
+    if not _db_initialized:
+        try:
+            Base.metadata.create_all(bind=engine)
+            db = SessionLocal()
+            try:
+                seed_database(db)
+            finally:
+                db.close()
+            _db_initialized = True
+        except Exception as e:
+            print(f"Database initialization notice: {e}")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Ensure database schema and seed initial dataset
-    Base.metadata.create_all(bind=engine)
-    db = SessionLocal()
-    try:
-        seed_database(db)
-    finally:
-        db.close()
+    ensure_db_initialized()
     yield
+
+ensure_db_initialized()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,

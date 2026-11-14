@@ -1,0 +1,20 @@
+{
+  "name": "indian-railways-train-tracking-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "install:all": "cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
+    "start": "cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+  },
+  "keywords": [
+    "indian-railways",
+    "train-tracking",
+    "fastapi",
+    "react",
+    "leaflet",
+    "vite"
+  ],
+  "author": "Tirthesh Bari",
+  "license": "MIT"
+}

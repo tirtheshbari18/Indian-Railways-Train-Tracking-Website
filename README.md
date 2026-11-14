@@ -131,6 +131,24 @@ This spins up:
 
 ---
 
+### Option C: Deploy to Vercel (1-Click Ready ⚡)
+
+This repository includes native Vercel configuration (`vercel.json`, `api/index.py`, `package.json`):
+
+1. **Import the repository** on [Vercel](https://vercel.com/new):
+   - Select `https://github.com/tirtheshbari18/Indian-Railways-Train-Tracking-Website.git`
+2. **Build & Output Settings**:
+   - Vercel automatically detects `vercel.json`.
+   - Build Command: `cd frontend && npm install && npm run build`
+   - Output Directory: `frontend/dist`
+   - Python Serverless Function: `api/index.py` handles all `/api/*` endpoints.
+3. **Environment Variables (Optional)**:
+   - `DATABASE_URL`: Provide your hosted PostgreSQL connection string (Neon, Supabase, Railway, or AWS RDS).
+   - If `DATABASE_URL` is omitted, the app automatically runs on SQLite in `/tmp/railway.db` and auto-seeds all Indian Railways data on the first request!
+4. Click **Deploy**! Your site is live with full frontend and API functionality.
+
+---
+
 ## 🧪 Automated Testing
 
 Run the Pytest suite to verify authentication, train searches, route calculations, live running tracking, and comparisons:
