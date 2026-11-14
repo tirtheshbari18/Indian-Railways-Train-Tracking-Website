@@ -10,7 +10,7 @@ import { Route, Search, Compass, MapPin } from 'lucide-react';
 
 export const TrainRoutePage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const trainParam = searchParams.get('train') || '22436';
+  const trainParam = searchParams.get('train') || '12951';
   const [trainNumber, setTrainNumber] = useState<string>(trainParam);
   const [inputVal, setInputVal] = useState<string>(trainParam);
   const [routeDetail, setRouteDetail] = useState<TrainRouteDetail | null>(null);

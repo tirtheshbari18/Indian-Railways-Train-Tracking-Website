@@ -6,6 +6,7 @@ from app.models.station import Station
 from app.models.train import Train
 from app.models.route import TrainRoute, TrainStop
 from app.models.live_update import TrainRunningUpdate
+from app.data.corridors import CORRIDOR_WAYPOINTS
 
 router = APIRouter(prefix="/map", tags=["Railway Map Network"])
 
@@ -50,7 +51,7 @@ def get_railway_network(db: Session = Depends(get_db)):
             "category": t.train_category,
             "source_code": t.source_station.code,
             "destination_code": t.destination_station.code,
-            "coordinates": coords
+            "coordinates": CORRIDOR_WAYPOINTS.get(t.train_number.strip(), coords)
         })
 
         if t.running_updates and len(t.running_updates) > 0:

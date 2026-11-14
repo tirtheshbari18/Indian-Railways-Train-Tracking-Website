@@ -56,18 +56,40 @@ export const RailwayMap: React.FC<Props> = ({
     if (showRoutes) {
       data.routes.forEach(route => {
         if (route.coordinates.length > 1) {
+          const color =
+            route.category === 'VANDE_BHARAT' ? '#0284c7' :
+            route.category === 'RAJDHANI' ? '#dc2626' :
+            route.category === 'SHATABDI' ? '#16a34a' :
+            route.category === 'DURONTO' ? '#9333ea' : '#d97706';
+
+          // Track bed underlay
+          L.polyline(route.coordinates, {
+            color: '#1e293b',
+            weight: 5,
+            opacity: 0.35,
+            lineCap: 'round',
+            lineJoin: 'round'
+          }).addTo(map);
+
+          // Corridor line
           const polyline = L.polyline(route.coordinates, {
-            color: '#2563eb',
+            color,
             weight: 3,
-            opacity: 0.65,
-            dashArray: '6, 6'
+            opacity: 0.85,
+            lineCap: 'round',
+            lineJoin: 'round'
           }).addTo(map);
 
           polyline.bindPopup(`
-            <div style="font-family: sans-serif; font-size: 12px;">
-              <b style="color: #1e3a8a;">${route.train_name}</b> (${route.train_number})<br>
-              <span style="color: #64748b;">${route.category}</span><br>
-              Route: <b>${route.source_code}</b> → <b>${route.destination_code}</b>
+            <div style="font-family: sans-serif; font-size: 12px; min-width: 170px;">
+              <b style="color: ${color}; font-size: 13px;">${route.train_name}</b><br>
+              <span style="font-family: monospace; font-weight: bold;">#${route.train_number}</span> · <span>${route.category}</span><br>
+              <div style="margin-top: 4px; padding-top: 4px; border-top: 1px solid #e2e8f0;">
+                Route: <b>${route.source_code}</b> → <b>${route.destination_code}</b>
+              </div>
+              <a href="/live-status/${route.train_number}" style="display: inline-block; margin-top: 6px; color: #ea580c; font-weight: 600; text-decoration: none;">
+                Open Live Status →
+              </a>
             </div>
           `);
         }
@@ -114,13 +136,15 @@ export const RailwayMap: React.FC<Props> = ({
         const liveTrainIcon = L.divIcon({
           className: 'live-train-marker',
           html: `
-            <div style="position: relative; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
-              <div style="position: absolute; width: 100%; height: 100%; background: ${color}; border-radius: 50%; opacity: 0.35; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
-              <div style="width: 14px; height: 14px; background: ${color}; border-radius: 50%; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.4); z-index: 10;"></div>
+            <div style="position: relative; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+              <div style="position: absolute; inset: -3px; background: ${color}; border-radius: 50%; opacity: 0.35; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+              <div style="width: 18px; height: 18px; background: ${color}; border-radius: 50%; border: 2.5px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.5); z-index: 10; display: flex; align-items: center; justify-content: center; color: white;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="16" height="16" x="4" y="3" rx="2"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>
+              </div>
             </div>
           `,
-          iconSize: [24, 24],
-          iconAnchor: [12, 12],
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
         });
 
         const trainMarker = L.marker([lt.latitude, lt.longitude], { icon: liveTrainIcon }).addTo(map);

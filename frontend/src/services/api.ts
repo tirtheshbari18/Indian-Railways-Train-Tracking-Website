@@ -20,10 +20,13 @@ import {
   FALLBACK_TRAINS,
   FALLBACK_LIVE_STATUS,
   FALLBACK_ROUTE,
+  FALLBACK_ROUTES,
   FALLBACK_NETWORK_MAP,
   FALLBACK_SYSTEM_HEALTH,
   FALLBACK_ADMIN_STATS,
-  FALLBACK_COMPARISON
+  FALLBACK_COMPARISON,
+  getFallbackRoute,
+  getFallbackLiveStatus
 } from './fallbackData';
 
 // Avoid duplicate /api if the user provided e.g. https://domain.com/api in Vercel
@@ -184,32 +187,21 @@ export const api = {
     getRoute: async (trainNumber: string): Promise<TrainRouteDetail> => {
       try {
         const res = await apiClient.get<TrainRouteDetail>(`/routes/${trainNumber}`);
-        if (res.data && Array.isArray(res.data.stops)) return res.data;
+        if (res.data && Array.isArray(res.data.stops) && res.data.stops.length > 0) return res.data;
       } catch (err) {
         // Fallback
       }
-      return {
-        ...FALLBACK_ROUTE,
-        train_number: trainNumber,
-      };
+      return getFallbackRoute(trainNumber);
     },
 
     getLiveStatus: async (trainNumber: string): Promise<LiveStatus> => {
       try {
         const res = await apiClient.get<LiveStatus>(`/live-status/${trainNumber}`);
-        if (res.data && res.data.train_number) return res.data;
+        if (res.data && res.data.train_number && Array.isArray(res.data.stops_timeline) && res.data.stops_timeline.length > 0) return res.data;
       } catch (err) {
         // Fallback
       }
-      return (
-        FALLBACK_LIVE_STATUS[trainNumber] || {
-          ...FALLBACK_LIVE_STATUS['22436'],
-          train_number: trainNumber,
-          train_name: 'Indian Express (' + trainNumber + ')',
-          is_live_verified: false,
-          data_source_label: 'Timetable Projection Simulation'
-        }
-      );
+      return getFallbackLiveStatus(trainNumber);
     },
 
     simulateTick: async () => {

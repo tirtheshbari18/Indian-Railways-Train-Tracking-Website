@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session, joinedload
 from app.core.database import get_db
 from app.models.train import Train
 from app.models.route import TrainRoute, TrainStop
+from app.data.corridors import CORRIDOR_WAYPOINTS
 
 router = APIRouter(prefix="/routes", tags=["Routes"])
 
@@ -69,5 +70,5 @@ def get_train_route(train_number: str, db: Session = Depends(get_db)):
         "total_distance_km": train.total_distance_km,
         "total_duration_minutes": train.total_duration_minutes,
         "stops": stops_data,
-        "coordinates": coordinates
+        "coordinates": CORRIDOR_WAYPOINTS.get(train.train_number.strip(), coordinates)
     }

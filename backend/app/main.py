@@ -58,17 +58,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register API Routers
-app.include_router(auth.router, prefix=settings.API_V1_STR)
-app.include_router(trains.router, prefix=settings.API_V1_STR)
-app.include_router(routes.router, prefix=settings.API_V1_STR)
-app.include_router(live_status.router, prefix=settings.API_V1_STR)
-app.include_router(stations.router, prefix=settings.API_V1_STR)
-app.include_router(comparison.router, prefix=settings.API_V1_STR)
-app.include_router(map_data.router, prefix=settings.API_V1_STR)
-app.include_router(favourites.router, prefix=settings.API_V1_STR)
-app.include_router(admin.router, prefix=settings.API_V1_STR)
-app.include_router(system.router, prefix=settings.API_V1_STR)
+# Register API Routers (Mount at both /api and root to guarantee Vercel proxy compatibility)
+api_routers = [
+    auth.router, trains.router, routes.router, live_status.router,
+    stations.router, comparison.router, map_data.router,
+    favourites.router, admin.router, system.router
+]
+
+for r in api_routers:
+    app.include_router(r, prefix=settings.API_V1_STR)
+    if settings.API_V1_STR != "":
+        app.include_router(r)
 
 @app.get("/")
 def root():
