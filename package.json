@@ -2,9 +2,12 @@
   "name": "indian-railways-train-tracking-website",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
-    "build": "node build.js",
-    "install:all": "cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
+    "build": "npm run build --workspace=frontend && node -e \"const fs=require('fs'); if(fs.existsSync('frontend/dist')){fs.rmSync('dist',{recursive:true,force:true});fs.cpSync('frontend/dist','dist',{recursive:true});}\"",
+    "dev": "npm run dev --workspace=frontend",
     "start": "cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000"
   },
   "keywords": [
