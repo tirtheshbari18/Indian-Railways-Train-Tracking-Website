@@ -1,0 +1,698 @@
+[
+  {
+    "train_number": "22436",
+    "train_name": "Vande Bharat Express",
+    "train_category": "Vande Bharat",
+    "source_code": "NDLS",
+    "destination_code": "BSB",
+    "departure_time": "06:00",
+    "arrival_time": "14:00",
+    "total_distance_km": 759.0,
+    "total_duration_minutes": 480,
+    "operating_days": "Tue,Wed,Fri,Sat,Sun",
+    "rake_type": "Vande Bharat 2.0",
+    "classes": "EC,CC",
+    "average_speed_kmh": 95.0,
+    "max_speed_kmh": 160.0,
+    "punctuality_rating": 4.9,
+    "stops": [
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "06:00",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "16"
+      },
+      {
+        "station_code": "CNB",
+        "stop_sequence": 2,
+        "scheduled_arrival": "10:08",
+        "scheduled_departure": "10:10",
+        "halt_minutes": 2,
+        "distance_from_source_km": 440.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "PRYJ",
+        "stop_sequence": 3,
+        "scheduled_arrival": "12:08",
+        "scheduled_departure": "12:10",
+        "halt_minutes": 2,
+        "distance_from_source_km": 635.0,
+        "day_number": 1,
+        "platform_number": "6"
+      },
+      {
+        "station_code": "BSB",
+        "stop_sequence": 4,
+        "scheduled_arrival": "14:00",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 759.0,
+        "day_number": 1,
+        "platform_number": "1"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 4,
+      "current_speed_kmh": 128.5,
+      "distance_covered_km": 512.0,
+      "distance_remaining_km": 247.0,
+      "progress_percentage": 67.4,
+      "last_reported_code": "CNB",
+      "next_scheduled_code": "PRYJ",
+      "current_latitude": 25.8500,
+      "current_longitude": 81.1500,
+      "data_source_type": "LIVE_VERIFIED"
+    }
+  },
+  {
+    "train_number": "12002",
+    "train_name": "New Delhi - Rani Kamlapati Shatabdi Express",
+    "train_category": "Shatabdi",
+    "source_code": "NDLS",
+    "destination_code": "BPL",
+    "departure_time": "06:00",
+    "arrival_time": "14:40",
+    "total_distance_km": 707.0,
+    "total_duration_minutes": 520,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+    "rake_type": "LHB",
+    "classes": "EA,EC,CC",
+    "average_speed_kmh": 84.0,
+    "max_speed_kmh": 150.0,
+    "punctuality_rating": 4.8,
+    "stops": [
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "06:00",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "AGC",
+        "stop_sequence": 2,
+        "scheduled_arrival": "07:50",
+        "scheduled_departure": "07:55",
+        "halt_minutes": 5,
+        "distance_from_source_km": 195.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "GWL",
+        "stop_sequence": 3,
+        "scheduled_arrival": "09:23",
+        "scheduled_departure": "09:28",
+        "halt_minutes": 5,
+        "distance_from_source_km": 313.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "VGLJ",
+        "stop_sequence": 4,
+        "scheduled_arrival": "10:45",
+        "scheduled_departure": "10:53",
+        "halt_minutes": 8,
+        "distance_from_source_km": 410.0,
+        "day_number": 1,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "BPL",
+        "stop_sequence": 5,
+        "scheduled_arrival": "14:40",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 707.0,
+        "day_number": 1,
+        "platform_number": "1"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 12,
+      "current_speed_kmh": 115.0,
+      "distance_covered_km": 365.0,
+      "distance_remaining_km": 342.0,
+      "progress_percentage": 51.6,
+      "last_reported_code": "GWL",
+      "next_scheduled_code": "VGLJ",
+      "current_latitude": 25.8000,
+      "current_longitude": 78.3500,
+      "data_source_type": "LIVE_VERIFIED"
+    }
+  },
+  {
+    "train_number": "12951",
+    "train_name": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "train_category": "Rajdhani",
+    "source_code": "MMCT",
+    "destination_code": "NDLS",
+    "departure_time": "17:00",
+    "arrival_time": "08:32",
+    "total_distance_km": 1384.0,
+    "total_duration_minutes": 932,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+    "rake_type": "Tejas Smart Sleeper",
+    "classes": "1A,2A,3A",
+    "average_speed_kmh": 89.0,
+    "max_speed_kmh": 140.0,
+    "punctuality_rating": 4.7,
+    "stops": [
+      {
+        "station_code": "MMCT",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "17:00",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "BVI",
+        "stop_sequence": 2,
+        "scheduled_arrival": "17:22",
+        "scheduled_departure": "17:24",
+        "halt_minutes": 2,
+        "distance_from_source_km": 30.0,
+        "day_number": 1,
+        "platform_number": "6"
+      },
+      {
+        "station_code": "ST",
+        "stop_sequence": 3,
+        "scheduled_arrival": "19:43",
+        "scheduled_departure": "19:48",
+        "halt_minutes": 5,
+        "distance_from_source_km": 263.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "BRC",
+        "stop_sequence": 4,
+        "scheduled_arrival": "21:06",
+        "scheduled_departure": "21:16",
+        "halt_minutes": 10,
+        "distance_from_source_km": 392.0,
+        "day_number": 1,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "KOTA",
+        "stop_sequence": 5,
+        "scheduled_arrival": "03:15",
+        "scheduled_departure": "03:20",
+        "halt_minutes": 5,
+        "distance_from_source_km": 919.0,
+        "day_number": 2,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 6,
+        "scheduled_arrival": "08:32",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 1384.0,
+        "day_number": 2,
+        "platform_number": "3"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 0,
+      "current_speed_kmh": 124.0,
+      "distance_covered_km": 720.0,
+      "distance_remaining_km": 664.0,
+      "progress_percentage": 52.0,
+      "last_reported_code": "BRC",
+      "next_scheduled_code": "KOTA",
+      "current_latitude": 23.9000,
+      "current_longitude": 74.5000,
+      "data_source_type": "LIVE_VERIFIED"
+    }
+  },
+  {
+    "train_number": "12301",
+    "train_name": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "train_category": "Rajdhani",
+    "source_code": "HWH",
+    "destination_code": "NDLS",
+    "departure_time": "16:50",
+    "arrival_time": "10:05",
+    "total_distance_km": 1451.0,
+    "total_duration_minutes": 1035,
+    "operating_days": "Mon,Tue,Wed,Thu,Sat,Sun",
+    "rake_type": "LHB",
+    "classes": "1A,2A,3A",
+    "average_speed_kmh": 85.0,
+    "max_speed_kmh": 130.0,
+    "punctuality_rating": 4.6,
+    "stops": [
+      {
+        "station_code": "HWH",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "16:50",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "9"
+      },
+      {
+        "station_code": "ASN",
+        "stop_sequence": 2,
+        "scheduled_arrival": "18:57",
+        "scheduled_departure": "19:00",
+        "halt_minutes": 3,
+        "distance_from_source_km": 200.0,
+        "day_number": 1,
+        "platform_number": "4"
+      },
+      {
+        "station_code": "DDU",
+        "stop_sequence": 3,
+        "scheduled_arrival": "00:45",
+        "scheduled_departure": "00:55",
+        "halt_minutes": 10,
+        "distance_from_source_km": 664.0,
+        "day_number": 2,
+        "platform_number": "4"
+      },
+      {
+        "station_code": "PRYJ",
+        "stop_sequence": 4,
+        "scheduled_arrival": "02:43",
+        "scheduled_departure": "02:45",
+        "halt_minutes": 2,
+        "distance_from_source_km": 816.0,
+        "day_number": 2,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "CNB",
+        "stop_sequence": 5,
+        "scheduled_arrival": "04:50",
+        "scheduled_departure": "04:55",
+        "halt_minutes": 5,
+        "distance_from_source_km": 1011.0,
+        "day_number": 2,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 6,
+        "scheduled_arrival": "10:05",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 1451.0,
+        "day_number": 2,
+        "platform_number": "14"
+      }
+    ],
+    "initial_running": {
+      "status": "Delayed",
+      "delay_minutes": 28,
+      "current_speed_kmh": 102.0,
+      "distance_covered_km": 1120.0,
+      "distance_remaining_km": 331.0,
+      "progress_percentage": 77.2,
+      "last_reported_code": "CNB",
+      "next_scheduled_code": "NDLS",
+      "current_latitude": 27.2000,
+      "current_longitude": 79.1000,
+      "data_source_type": "DEMO_DATA"
+    }
+  },
+  {
+    "train_number": "20901",
+    "train_name": "Mumbai Central - Gandhinagar Capital Vande Bharat Express",
+    "train_category": "Vande Bharat",
+    "source_code": "MMCT",
+    "destination_code": "ADI",
+    "departure_time": "06:00",
+    "arrival_time": "11:25",
+    "total_distance_km": 491.0,
+    "total_duration_minutes": 325,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat",
+    "rake_type": "Vande Bharat 2.0",
+    "classes": "EC,CC",
+    "average_speed_kmh": 91.0,
+    "max_speed_kmh": 160.0,
+    "punctuality_rating": 4.9,
+    "stops": [
+      {
+        "station_code": "MMCT",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "06:00",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "5"
+      },
+      {
+        "station_code": "BVI",
+        "stop_sequence": 2,
+        "scheduled_arrival": "06:23",
+        "scheduled_departure": "06:25",
+        "halt_minutes": 2,
+        "distance_from_source_km": 30.0,
+        "day_number": 1,
+        "platform_number": "6"
+      },
+      {
+        "station_code": "ST",
+        "stop_sequence": 3,
+        "scheduled_arrival": "08:37",
+        "scheduled_departure": "08:40",
+        "halt_minutes": 3,
+        "distance_from_source_km": 263.0,
+        "day_number": 1,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "BRC",
+        "stop_sequence": 4,
+        "scheduled_arrival": "09:56",
+        "scheduled_departure": "10:01",
+        "halt_minutes": 5,
+        "distance_from_source_km": 392.0,
+        "day_number": 1,
+        "platform_number": "3"
+      },
+      {
+        "station_code": "ADI",
+        "stop_sequence": 5,
+        "scheduled_arrival": "11:25",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 491.0,
+        "day_number": 1,
+        "platform_number": "8"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 2,
+      "current_speed_kmh": 130.0,
+      "distance_covered_km": 310.0,
+      "distance_remaining_km": 181.0,
+      "progress_percentage": 63.1,
+      "last_reported_code": "ST",
+      "next_scheduled_code": "BRC",
+      "current_latitude": 21.8000,
+      "current_longitude": 73.0100,
+      "data_source_type": "LIVE_VERIFIED"
+    }
+  },
+  {
+    "train_number": "12626",
+    "train_name": "Kerala Superfast Express",
+    "train_category": "Superfast",
+    "source_code": "NDLS",
+    "destination_code": "MAS",
+    "departure_time": "20:10",
+    "arrival_time": "04:30",
+    "total_distance_km": 2180.0,
+    "total_duration_minutes": 1940,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+    "rake_type": "LHB",
+    "classes": "2A,3A,SL,GEN",
+    "average_speed_kmh": 68.0,
+    "max_speed_kmh": 130.0,
+    "punctuality_rating": 4.3,
+    "stops": [
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "20:10",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "5"
+      },
+      {
+        "station_code": "AGC",
+        "stop_sequence": 2,
+        "scheduled_arrival": "22:20",
+        "scheduled_departure": "22:25",
+        "halt_minutes": 5,
+        "distance_from_source_km": 195.0,
+        "day_number": 1,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "GWL",
+        "stop_sequence": 3,
+        "scheduled_arrival": "00:05",
+        "scheduled_departure": "00:10",
+        "halt_minutes": 5,
+        "distance_from_source_km": 313.0,
+        "day_number": 2,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "VGLJ",
+        "stop_sequence": 4,
+        "scheduled_arrival": "01:30",
+        "scheduled_departure": "01:38",
+        "halt_minutes": 8,
+        "distance_from_source_km": 410.0,
+        "day_number": 2,
+        "platform_number": "3"
+      },
+      {
+        "station_code": "BPL",
+        "stop_sequence": 5,
+        "scheduled_arrival": "05:30",
+        "scheduled_departure": "05:35",
+        "halt_minutes": 5,
+        "distance_from_source_km": 707.0,
+        "day_number": 2,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "SC",
+        "stop_sequence": 6,
+        "scheduled_arrival": "17:10",
+        "scheduled_departure": "17:25",
+        "halt_minutes": 15,
+        "distance_from_source_km": 1490.0,
+        "day_number": 2,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "MAS",
+        "stop_sequence": 7,
+        "scheduled_arrival": "04:30",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 2180.0,
+        "day_number": 3,
+        "platform_number": "4"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 18,
+      "current_speed_kmh": 78.0,
+      "distance_covered_km": 940.0,
+      "distance_remaining_km": 1240.0,
+      "progress_percentage": 43.1,
+      "last_reported_code": "BPL",
+      "next_scheduled_code": "SC",
+      "current_latitude": 20.8000,
+      "current_longitude": 77.9000,
+      "data_source_type": "DEMO_DATA"
+    }
+  },
+  {
+    "train_number": "12137",
+    "train_name": "Punjab Mail",
+    "train_category": "Superfast",
+    "source_code": "CSMT",
+    "destination_code": "NDLS",
+    "departure_time": "19:35",
+    "arrival_time": "21:30",
+    "total_distance_km": 1540.0,
+    "total_duration_minutes": 1555,
+    "operating_days": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+    "rake_type": "LHB",
+    "classes": "1A,2A,3A,SL,GEN",
+    "average_speed_kmh": 60.0,
+    "max_speed_kmh": 120.0,
+    "punctuality_rating": 4.1,
+    "stops": [
+      {
+        "station_code": "CSMT",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "19:35",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "18"
+      },
+      {
+        "station_code": "BPL",
+        "stop_sequence": 2,
+        "scheduled_arrival": "09:30",
+        "scheduled_departure": "09:35",
+        "halt_minutes": 5,
+        "distance_from_source_km": 837.0,
+        "day_number": 2,
+        "platform_number": "3"
+      },
+      {
+        "station_code": "VGLJ",
+        "stop_sequence": 3,
+        "scheduled_arrival": "14:15",
+        "scheduled_departure": "14:23",
+        "halt_minutes": 8,
+        "distance_from_source_km": 1134.0,
+        "day_number": 2,
+        "platform_number": "4"
+      },
+      {
+        "station_code": "GWL",
+        "stop_sequence": 4,
+        "scheduled_arrival": "15:35",
+        "scheduled_departure": "15:40",
+        "halt_minutes": 5,
+        "distance_from_source_km": 1231.0,
+        "day_number": 2,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "AGC",
+        "stop_sequence": 5,
+        "scheduled_arrival": "17:50",
+        "scheduled_departure": "17:55",
+        "halt_minutes": 5,
+        "distance_from_source_km": 1349.0,
+        "day_number": 2,
+        "platform_number": "1"
+      },
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 6,
+        "scheduled_arrival": "21:30",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 1540.0,
+        "day_number": 2,
+        "platform_number": "6"
+      }
+    ],
+    "initial_running": {
+      "status": "Delayed",
+      "delay_minutes": 45,
+      "current_speed_kmh": 65.0,
+      "distance_covered_km": 1190.0,
+      "distance_remaining_km": 350.0,
+      "progress_percentage": 77.2,
+      "last_reported_code": "VGLJ",
+      "next_scheduled_code": "GWL",
+      "current_latitude": 25.8000,
+      "current_longitude": 78.4000,
+      "data_source_type": "SCHEDULED_ESTIMATE"
+    }
+  },
+  {
+    "train_number": "12259",
+    "train_name": "Sealdah - Bikaner AC Duronto Express",
+    "train_category": "Duronto",
+    "source_code": "HWH",
+    "destination_code": "JP",
+    "departure_time": "17:00",
+    "arrival_time": "14:20",
+    "total_distance_km": 1515.0,
+    "total_duration_minutes": 1280,
+    "operating_days": "Mon,Wed,Thu,Sun",
+    "rake_type": "LHB",
+    "classes": "1A,2A,3A",
+    "average_speed_kmh": 76.0,
+    "max_speed_kmh": 130.0,
+    "punctuality_rating": 4.5,
+    "stops": [
+      {
+        "station_code": "HWH",
+        "stop_sequence": 1,
+        "scheduled_arrival": null,
+        "scheduled_departure": "17:00",
+        "halt_minutes": 0,
+        "distance_from_source_km": 0.0,
+        "day_number": 1,
+        "platform_number": "12"
+      },
+      {
+        "station_code": "DDU",
+        "stop_sequence": 2,
+        "scheduled_arrival": "01:25",
+        "scheduled_departure": "01:35",
+        "halt_minutes": 10,
+        "distance_from_source_km": 664.0,
+        "day_number": 2,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "CNB",
+        "stop_sequence": 3,
+        "scheduled_arrival": "05:25",
+        "scheduled_departure": "05:30",
+        "halt_minutes": 5,
+        "distance_from_source_km": 1011.0,
+        "day_number": 2,
+        "platform_number": "2"
+      },
+      {
+        "station_code": "NDLS",
+        "stop_sequence": 4,
+        "scheduled_arrival": "11:00",
+        "scheduled_departure": "11:20",
+        "halt_minutes": 20,
+        "distance_from_source_km": 1451.0,
+        "day_number": 2,
+        "platform_number": "11"
+      },
+      {
+        "station_code": "JP",
+        "stop_sequence": 5,
+        "scheduled_arrival": "14:20",
+        "scheduled_departure": null,
+        "halt_minutes": 0,
+        "distance_from_source_km": 1515.0,
+        "day_number": 2,
+        "platform_number": "3"
+      }
+    ],
+    "initial_running": {
+      "status": "Running",
+      "delay_minutes": 8,
+      "current_speed_kmh": 110.0,
+      "distance_covered_km": 830.0,
+      "distance_remaining_km": 685.0,
+      "progress_percentage": 54.7,
+      "last_reported_code": "DDU",
+      "next_scheduled_code": "CNB",
+      "current_latitude": 25.9000,
+      "current_longitude": 81.5000,
+      "data_source_type": "DEMO_DATA"
+    }
+  }
+]

@@ -1,0 +1,72 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
+from app.core.config import settings
+from app.core.database import SessionLocal, Base, engine
+from app.data.seed import seed_database
+from app.api import auth, trains, routes, live_status, stations, comparison, map_data, favourites, admin, system
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Ensure database schema and seed initial dataset
+    Base.metadata.create_all(bind=engine)
+    db = SessionLocal()
+    try:
+        seed_database(db)
+    finally:
+        db.close()
+    yield
+
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    version=settings.PROJECT_VERSION,
+    description="""
+# Indian Railways Train Tracking & Information Platform API
+
+Welcome to the official developer API for the Indian Railways train tracking platform.
+This service provides:
+- High-performance train search and timetable inspection
+- Verified real-time train tracking & GPS telemetry
+- Railway station directories and live station boards
+- Comprehensive route visualisations and train comparisons
+- Strict separation between verified live data and simulation/scheduled estimations.
+    """,
+    lifespan=lifespan,
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    docs_url=f"{settings.API_V1_STR}/docs",
+    redoc_url=f"{settings.API_V1_STR}/redoc"
+)
+
+# Set up CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Register API Routers
+app.include_router(auth.router, prefix=settings.API_V1_STR)
+app.include_router(trains.router, prefix=settings.API_V1_STR)
+app.include_router(routes.router, prefix=settings.API_V1_STR)
+app.include_router(live_status.router, prefix=settings.API_V1_STR)
+app.include_router(stations.router, prefix=settings.API_V1_STR)
+app.include_router(comparison.router, prefix=settings.API_V1_STR)
+app.include_router(map_data.router, prefix=settings.API_V1_STR)
+app.include_router(favourites.router, prefix=settings.API_V1_STR)
+app.include_router(admin.router, prefix=settings.API_V1_STR)
+app.include_router(system.router, prefix=settings.API_V1_STR)
+
+@app.get("/")
+def root():
+    return {
+        "service": settings.PROJECT_NAME,
+        "version": settings.PROJECT_VERSION,
+        "status": "healthy",
+        "docs_url": f"{settings.API_V1_STR}/docs"
+    }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)

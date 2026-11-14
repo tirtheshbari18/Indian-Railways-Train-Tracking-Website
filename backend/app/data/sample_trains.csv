@@ -1,0 +1,4 @@
+train_number,train_name,train_category,source_code,destination_code,departure_time,arrival_time,total_distance_km,operating_days,classes
+12431,Trivandrum Rajdhani Express,Rajdhani,MAS,NDLS,19:15,12:40,2844.0,"Tue,Thu,Fri","1A,2A,3A"
+12004,Lucknow Shatabdi Express,Shatabdi,NDLS,LKO,06:10,12:40,511.0,"Mon,Tue,Wed,Thu,Fri,Sat,Sun","EA,EC,CC"
+22691,Bangalore Rajdhani Express,Rajdhani,SBC,NDLS,20:00,05:55,2365.0,"Mon,Tue,Wed,Thu,Fri,Sat,Sun","1A,2A,3A"
